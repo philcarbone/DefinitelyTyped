@@ -1,5 +1,5 @@
 // Type definitions for Meteor 0.6.5
-// Project: Meteor
+// Project: http://www.meteor.com/
 // Definitions by: Dave Allen <https://github.com/fullflavedave>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
@@ -30,8 +30,29 @@ interface IMeteor {
   /*************************
    * Publish and Subscribe *
    *************************/
+
+  /**
+   * Publish a record set.
+   *
+   * @param name Name of the attribute set. If null, the set has no name, and the record set is
+   *             automatically sent to all connected clients.
+   * @param func Function called on the server each time a client subscribes. Inside the function,
+   *             this is the publish handler object, described below. If the client passed arguments
+   *             to subscribe, the function is called with the same arguments.
+   */
   publish(name: string, func: Function): any;
-  subscribe(name: string, arg1?: any, arg2?: any, ars3?: any, arg4?: any, callbacks?: Function[]): IMeteorHandle;
+  //Todo: Figure out a way to define this.userId, this.added, this.changed, etc that can be called from within publish
+
+  /**
+   * Subscribe to a record set. Returns a handle that provides stop() and ready() methods.
+   *
+   * @param name Name of the subscription. Matches name of server's publish() call.
+   * @param arg1,arg2,arg3 Optional arguments passed to publisher function on server.
+   * @param callbacks Optional. May include onError and onReady callbacks. Can be Object or Function.  If a function
+   *                  is passed instead of an object, it is interpreted as an onReady callback.
+   */
+  subscribe(name: string, arg1?: any, arg2?: any, ars3?: any, arg4?: any, callbacks?: Object): IMeteorHandle;
+
 
 
   /***********

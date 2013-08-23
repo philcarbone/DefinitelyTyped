@@ -24,12 +24,10 @@ var Monkeys = new Meteor.Collection('monkeys');
 
 
 /**
- * From Meteor.startup section of meteor.com docs
+ * From Core, Meteor.startup section
  * Tests Meteor.isServer, Meteor.startup, Collection.insert(), Colleciton.find() *
  */
-
 if (Meteor.isServer) {
-
   Meteor.startup(function () {
     if (Rooms.find().count() === 0) {
       Rooms.insert({name: "Initial room"});
@@ -38,7 +36,7 @@ if (Meteor.isServer) {
 }
 
 /**
- * Example taken from Meteor.publish section of meteor.com docs
+ * From Publish and Subscribe, Meteor.publish section
  **/
 Meteor.publish("rooms", function () {
   return Rooms.find({}, {fields: {secretInfo: 0}});
@@ -57,7 +55,7 @@ Meteor.publish("roomAndMessages", function (roomId) {
 });
 
 /**
- * Also from Meteor.publish section
+ * Also from Publish and Subscribe, Meteor.publish section
  */
 Meteor.publish("counts-by-room", function (roomId) {
   var self = this;
@@ -101,7 +99,7 @@ console.log("Current room has " +
     " messages.");
 
 /**
- * From Meteor.subscribe
+ * From Publish and Subscribe, Meteor.subscribe section
  */
 Meteor.subscribe("allplayers");
 
@@ -114,7 +112,7 @@ Deps.autorun(function () {
 });
 
 /**
- * From Meteor.methods section
+ * From Methods, Meteor.methods section
  */
 Meteor.methods({
   foo: function (arg1, arg2) {
@@ -134,13 +132,13 @@ Meteor.methods({
 });
 
 /**
- * From Meteor.call section
+ * From Methods, Meteor.call section
  */
 Meteor.call('foo', 1, 2, function (error, result) {} );
 var result = Meteor.call('foo', 1, 2);
 
 /**
- * From Meteor.Collection section
+ * From Collections, Meteor.Collection section
  */
 // DA: I added the "var" keyword in there
 var Chatrooms = new Meteor.Collection("chatrooms");
@@ -190,7 +188,7 @@ Animals.insert({name: "raptor", sound: "roar"});
 Animals.findOne({name: "raptor"}).makeNoise(); // prints "roar"
 
 /**
- * From Collection.insert section
+ * From Collections, Collection.insert section
  */
 // DA: I added the variable declaration statements to make this work
 var Lists = new Meteor.Collection('Lists');
@@ -201,7 +199,7 @@ Items.insert({list: groceriesId, name: "Watercress"});
 Items.insert({list: groceriesId, name: "Persimmons"});
 
 /**
- * From collection.update section
+ * From Collections, collection.update section
  */
 var Players = new Meteor.Collection('Players');
 
@@ -212,7 +210,7 @@ Template.adminDashboard.events({
 });
 
 /**
- * Also from collection.update section
+ * Also from Collections, collection.update section
  */
 Meteor.methods({
   declareWinners: function () {
@@ -223,7 +221,7 @@ Meteor.methods({
 });
 
 /**
- * From collection.remove section
+ * From Collections, collection.remove section
  */
 Template.chat.events({
   'click .remove': function () {
@@ -242,7 +240,7 @@ Meteor.startup(function () {
 });
 
 /***
- * From collection.allow section
+ * From Collections, collection.allow section
  */
 Posts = new Meteor.Collection("posts");
 
@@ -275,7 +273,7 @@ Posts.deny({
 });
 
 /**
- * From cursor.forEach section
+ * From Collections, cursor.forEach section
  */
 var topPosts = Posts.find({}, {sort: {score: -1}, limit: 5});
 var count = 0;
@@ -285,7 +283,7 @@ topPosts.forEach(function (post) {
 });
 
 /**
- * From cursor.count section
+ * From Collections, cursor.count section
  */
 var frag = Meteor.render(function () {
   var highScoring = Posts.find({score: {$gt: 10}});
@@ -295,7 +293,7 @@ var frag = Meteor.render(function () {
 document.body.appendChild(frag);
 
 /**
- * From cursor.observeChanges section
+ * From Collections, cursor.observeChanges section
  */
 // DA: I added this line to make it work
 var Users = new Meteor.Collection('users');
@@ -317,7 +315,7 @@ var handle = query.observeChanges({
 setTimeout(function () {handle.stop();}, 5000);
 
 /**
- * From Session.set section
+ * From Sessions, Session.set section
  */
 Deps.autorun(function () {
   Meteor.subscribe("chat-history", {room: Session.get("currentRoomId")});
@@ -328,7 +326,7 @@ Deps.autorun(function () {
 Session.set("currentRoomId", "home");
 
 /**
- * From Session.get section
+ * From Sessions, Session.get section
  */
 Session.set("enemy", "Eastasia");
 var frag1 = Meteor.render(function () {
@@ -345,14 +343,14 @@ var frag1 = Meteor.render(function () {
 Session.set("enemy", "Eurasia");
 
 /**
- * From Session.equals section
+ * From Sessions, Session.equals section
  */
 var value;
 Session.get("key") === value;
 Session.equals("key", value);
 
 /**
- * From Meteor.users section
+ * From Accounts, Meteor.users section
  */
 Meteor.publish("userData", function () {
   return Meteor.users.find({_id: this.userId},
@@ -362,7 +360,7 @@ Meteor.publish("userData", function () {
 Meteor.users.deny({update: function () { return true; }});
 
 /**
- * From Accounts.loginWithExternalService section
+ * From Accounts, Meteor.loginWithExternalService section
  */
 Accounts.loginServiceConfiguration.remove({
   service: "weibo"
@@ -381,7 +379,7 @@ Meteor.loginWithGithub({
 });
 
 /**
- * From Accounts.ui.config section
+ * From Accounts, Accounts.ui.config section
  */
 Accounts.ui.config({
   requestPermissions: {
