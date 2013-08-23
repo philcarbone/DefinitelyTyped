@@ -12,7 +12,6 @@ Handlebars.registerHelper('fullName', (person) => {
     return person.firstName + " " + person.lastName;
 });
 
-
 Handlebars.registerHelper('agree_button', () => {
     return new Handlebars.SafeString(
       "<button>I agree. I " + this.emotion + " " + this.name + "</button>"
