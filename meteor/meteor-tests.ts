@@ -1,8 +1,8 @@
 /// <reference path='meteor.d.ts'/>
 
 /**
- * All code below was copied from the sample code at http://docs.meteor.com/.
- * Occasionally, the code was tweaked to make it work (e.g. declaring a variable
+ * All code below was copied from the examples at http://docs.meteor.com/.
+ * When necessary, code was added to make the examples work (e.g. declaring a variable
  * that was assumed to have been declared earlier)
  */
 

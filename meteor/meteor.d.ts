@@ -5,8 +5,8 @@
 
 /**
  * Todo:
- * Need to come back to this.functions
- * How to define the signature of callback function and other functions
+ * Define "this.function" functions.
+ * Define the signatures of callback functions and other functions.
  ***/
 
 interface IMeteor {
