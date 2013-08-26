@@ -25,7 +25,7 @@ var Monkeys = new Meteor.Collection('monkeys');
 
 /**
  * From Core, Meteor.startup section
- * Tests Meteor.isServer, Meteor.startup, Collection.insert(), Colleciton.find() *
+ * Tests Meteor.isServer, Meteor.startup, Collection.insert(), Collection.find()
  */
 if (Meteor.isServer) {
   Meteor.startup(function () {
