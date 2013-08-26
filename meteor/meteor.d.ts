@@ -3,11 +3,6 @@
 // Definitions by: Dave Allen <https://github.com/fullflavedave>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
-/**
- * Todo:
- * Define "this.function" functions.
- * Define the signatures of callback functions and other functions.
- ***/
 
 interface IMeteor {
 
@@ -52,7 +47,6 @@ interface IMeteor {
    *                  is passed instead of an object, it is interpreted as an onReady callback.
    */
   subscribe(name: string, arg1?: any, arg2?: any, ars3?: any, arg4?: any, callbacks?: Object): IMeteorHandle;
-
 
 
   /***********
@@ -589,3 +583,9 @@ interface IMeteorErrors {
 declare var Router: IMeteorRouter;
 
 /******************** End definitions for contributed packages from Atmosphere (or elsewhere) ***********************/
+
+/**
+ * Todo:
+ * Define "this.function" functions.
+ * Define the signatures of callback functions and other functions.
+ ***/
